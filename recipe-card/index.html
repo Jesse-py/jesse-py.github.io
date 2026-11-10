@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Card: a browser add-on that shows just the recipe</title>
+<meta name="description" content="Recipe Card is a free Firefox and Edge add-on: one click turns a recipe page into a clean card with ingredients, steps, servings scaling, metric/US units, cook mode, and print.">
+<link rel="canonical" href="https://jesse-py.github.io/recipe-card/">
+<link rel="icon" href="icon-128.png">
+<style>
+  body { font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: #1d1d1d; background: #fbf7ef; margin: 0; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 48px; }
+  header { display: flex; gap: 16px; align-items: center; }
+  header img { width: 64px; height: 64px; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0; }
+  h2 { font-size: 1.25rem; margin: 28px 0 8px; }
+  a { color: #7a4b12; }
+  .lead { font-size: 1.1rem; margin: 18px 0; }
+  .btn { display: inline-block; font: inherit; font-weight: 600; padding: 10px 20px; border-radius: 999px; border: 0;
+    background: #2f6b3a; color: #fff; cursor: pointer; text-decoration: none; }
+  .btn:focus-visible { outline: 3px solid #d08a1e; outline-offset: 2px; }
+  .note { color: #5c5c5c; font-size: .95rem; }
+  figure { margin: 18px 0; }
+  figure img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #e3d8c3; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  .card { background: #fff; border: 1px solid #e3d8c3; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  footer { color: #5c5c5c; font-size: .9rem; margin-top: 32px; border-top: 1px solid #e3d8c3; padding-top: 12px; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Recipe","name":"Weeknight Beef & Bean Chili (demo recipe)",
+"description":"The demo recipe for the Recipe Card add-on: a pot of chili in about an hour.",
+"author":{"@type":"Organization","name":"Recipe Card"},
+"recipeYield":["6","6 servings"],"prepTime":"PT15M","cookTime":"PT45M","totalTime":"PT1H",
+"recipeIngredient":["1 lb ground beef","1 large onion, diced","2 tablespoons chili powder","1 teaspoon ground cumin","1 1/2 cups beef broth","1 (15 oz) can kidney beans, drained","1 (14.5 oz) can diced tomatoes","½ tsp salt","2-3 cloves garlic, minced","Sour cream, for serving"],
+"recipeInstructions":[{"@type":"HowToSection","name":"Brown the beef","itemListElement":[{"@type":"HowToStep","text":"Heat a large pot over medium-high heat. Add the beef and onion."},{"@type":"HowToStep","text":"Cook, breaking up the beef, until browned, about 8 minutes. Spoon off most of the fat."}]},{"@type":"HowToSection","name":"Simmer","itemListElement":[{"@type":"HowToStep","text":"Stir in the garlic, chili powder and cumin and cook 1 minute."},{"@type":"HowToStep","text":"Add the broth, beans, tomatoes and salt. Bring to a simmer."},{"@type":"HowToStep","text":"Simmer uncovered for 30 minutes, stirring now and then, until thick. Taste and add salt if needed."}]}]}
+</script>
+</head>
+<body>
+<main>
+<header>
+  <img src="icon-128.png" alt="">
+  <h1>Recipe Card: just the recipe, one click away</h1>
+</header>
+
+<p class="lead">Recipe pages bury the ingredients under a long story, ads, and pop-ups. Recipe Card is a small, free browser add-on:
+click its button and the recipe opens as a clean card on top of the page.</p>
+
+<p><button class="btn" id="demo" type="button">Try it on this page</button>
+<span class="note">(this runs the add-on's own code on the demo chili recipe here; press Esc to close)</span></p>
+
+<figure>
+  <img src="screenshot-desktop.png" width="1280" height="800" alt="A recipe card showing a chili recipe: servings stepper set to 6, units menu, Cook mode and Print buttons, a checklist of ingredients, and numbered steps grouped into sections.">
+</figure>
+
+<h2>What it does</h2>
+<ul>
+  <li><strong>Ingredients and steps only.</strong> Tick off ingredients as you go and tap a step to mark it done.</li>
+  <li><strong>Scale servings.</strong> Amounts change with real kitchen fractions (1½ cups, not 1.5000). Package sizes like
+    "1 (15 oz) can" stay as written; only the count changes.</li>
+  <li><strong>Metric or US units.</strong> Cups, tablespoons, ounces, and pounds convert to ml and grams, and back.
+    Oven temperatures in the steps get the other scale added (350°F becomes 350°F (175°C)). Cups of flour convert to ml,
+    not grams, because the weight depends on the ingredient.</li>
+  <li><strong>Cook mode</strong> keeps your screen from going to sleep while you cook (where the browser supports it).</li>
+  <li><strong>Print</strong> just the recipe, without the rest of the page.</li>
+  <li>Keyboard shortcut: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>.</li>
+</ul>
+
+<h2>Get it</h2>
+<div class="card">
+  <p><strong>Firefox</strong> and <strong>Microsoft Edge</strong> versions are on their way to the add-on stores. This page will link
+  to them as soon as they're approved.</p>
+</div>
+
+<h2>How it works</h2>
+<p>Most recipe sites include the recipe in a standard format for search engines
+(<a href="https://schema.org/Recipe">schema.org Recipe</a>). Recipe Card reads that, so it works on most recipe sites without
+any site-by-site rules. If a page doesn't include it (some older blogs, list and search pages), the card says so and you can
+use the page as normal.</p>
+
+<h2 id="privacy">Privacy</h2>
+<ul>
+  <li>Recipe Card only reads a page <strong>when you click its button</strong> on that page. It doesn't ask for access to all
+    websites, and it never runs in the background.</li>
+  <li>It collects nothing and sends nothing anywhere: no analytics, no account, no servers. The recipe is read and shown inside
+    your browser.</li>
+  <li>The only thing it saves is your units choice (as written, metric, or US), in your browser's add-on storage.</li>
+</ul>
+
+<h2>Questions and bug reports</h2>
+<p>If a recipe site shows the wrong amounts or no recipe, please report it on the add-on's store page (the "support" link)
+and include the page address.</p>
+
+<footer>Made with AI help (Claude) and tested before publishing.
+More free tools: <a href="https://jesse-py.github.io/">jesse-py.github.io</a>.</footer>
+</main>
+<script>
+function demo() {
+  function run() { var s = document.createElement('script'); s.src = 'demo/content.js'; document.body.appendChild(s); s.onload = function () { s.remove(); }; }
+  if (window.RecipeCardLib) return run();
+  var lib = document.createElement('script'); lib.src = 'demo/recipe.js'; lib.onload = run; document.body.appendChild(lib);
+}
+document.getElementById('demo').addEventListener('click', demo);
+if (location.hash === '#try') demo();
+</script>
+</body>
+</html>
