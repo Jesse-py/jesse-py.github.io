@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Scaler: Halve, Double, or Resize Any Ingredient List (Free)</title>
+<meta name="description" content="Paste a recipe's ingredients, set the servings, and get every amount scaled in real cups and spoons (half of 1/3 cup = 2 tbsp + 2 tsp), or in metric.">
+<link rel="canonical" href="https://jesse-py.github.io/recipe-card/recipe-scaler/">
+<link rel="icon" href="../icon-128.png">
+<style>
+  body { font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: #1d1d1d; background: #fbf7ef; margin: 0; }
+  main { max-width: 820px; margin: 0 auto; padding: 32px 20px 48px; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.25rem; margin: 28px 0 8px; }
+  a { color: #7a4b12; }
+  nav { font-size: .95rem; margin-bottom: 18px; }
+  .note { color: #5c5c5c; font-size: .95rem; }
+  .card { background: #fff; border: 1px solid #e3d8c3; border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
+  .tool { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 680px) { .tool { grid-template-columns: 1fr; } }
+  label { font-weight: 600; display: block; margin-bottom: 4px; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 260px; font: 16px/1.5 system-ui, sans-serif; padding: 10px;
+    border: 1px solid #c9b994; border-radius: 8px; background: #fff; }
+  input[type=number], select { font: inherit; padding: 6px 8px; border: 1px solid #c9b994; border-radius: 8px; background: #fff; }
+  input[type=number] { width: 5.5em; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; margin: 14px 0; }
+  .row > div { min-width: 0; }
+  .quick button, .copy { font: inherit; font-size: .95rem; padding: 6px 12px; border-radius: 999px; border: 1px solid #2f6b3a;
+    background: #fff; color: #2f6b3a; cursor: pointer; margin: 0 6px 6px 0; }
+  .quick button:hover, .copy:hover { background: #eef5ef; }
+  .copy { background: #2f6b3a; color: #fff; }
+  button:focus-visible, textarea:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #d08a1e; outline-offset: 2px; }
+  #out { list-style: none; padding: 0; margin: 0; }
+  #out li { padding: 6px 0; border-bottom: 1px solid #efe6d4; }
+  #out li.plain { color: #5c5c5c; font-style: italic; }
+  #out strong { color: #2f6b3a; }
+  #factor { font-size: .95rem; color: #5c5c5c; margin: 0 0 8px; }
+  footer { color: #5c5c5c; font-size: .9rem; margin-top: 32px; border-top: 1px solid #e3d8c3; padding-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../">Recipe Card</a> / Recipe scaler</nav>
+<h1>Recipe scaler: halve, double, or resize any ingredient list</h1>
+<p>Paste the ingredients, say how many servings the recipe makes and how many you want, and every amount is rescaled into
+measures you can actually scoop: half of 1/3 cup comes out as <strong>2 tbsp + 2 tsp</strong>, not "1/6 cup". Switch to metric
+or US units if you like. Nothing you paste leaves your browser.</p>
+
+<div class="card">
+<div class="tool">
+  <div>
+    <label for="ing">Ingredients (one per line)</label>
+    <textarea id="ing" spellcheck="false">1 1/2 cups all-purpose flour
+1/3 cup sugar
+2 tsp baking powder
+1/2 tsp salt
+3/4 cup milk
+2 large eggs
+3 tbsp butter, melted
+1 tsp vanilla extract</textarea>
+  </div>
+  <div>
+    <div class="row">
+      <div><label for="makes">Recipe makes</label><input id="makes" type="number" min="0.25" step="any" value="4"> servings</div>
+      <div><label for="want">You want</label><input id="want" type="number" min="0.25" step="any" value="6"> servings</div>
+    </div>
+    <div class="quick" role="group" aria-label="Quick sizes">
+      <button type="button" data-f="0.5">Half</button><button type="button" data-f="1/3">One third</button><button type="button" data-f="1.5">1½ times</button><button type="button" data-f="2">Double</button><button type="button" data-f="3">Triple</button>
+    </div>
+    <div class="row">
+      <div><label for="units">Units</label>
+        <select id="units"><option value="original">As written</option><option value="us">US cups and ounces</option><option value="metric">Metric (mL, g)</option></select></div>
+    </div>
+    <p id="factor" aria-live="polite"></p>
+    <ul id="out" aria-live="polite"></ul>
+    <p><button type="button" class="copy" id="copy">Copy the scaled list</button> <span id="copied" class="note" role="status"></span></p>
+  </div>
+</div>
+</div>
+
+<h2>How the amounts are rounded</h2>
+<ul>
+  <li><strong>Cups and spoons:</strong> if the new amount is a standard measure (1/4, 1/3, 1/2, 2/3, 3/4 cup; whole or half
+  tablespoons; 1/8 to 7/8 tsp) you get that. Otherwise it's spelled out with the fewest scoops from a normal set of cups and
+  spoons: 3/4 cup x 1 1/2 = <strong>1 cup + 2 tbsp</strong>. Amounts that don't come out even are rounded to the nearest
+  1/8 teaspoon and marked with ~.</li>
+  <li><strong>Other amounts</strong> (eggs, cloves, cans, ounces, grams) are scaled and shown in kitchen fractions, or whole
+  numbers from 10 up. In "1 (15 oz) can", only the count scales; the can size stays.</li>
+  <li><strong>Metric:</strong> mL and grams are rounded to the nearest 0.5 under 10, to whole numbers up to 100, then to the
+  nearest 5; liters and kilograms to 0.1. The spoon math matches the <a href="../kitchen-conversion-chart/">printable kitchen
+  conversion chart</a>, which has the common halving and doubling amounts on one page.</li>
+  <li>Lines without a number at the start ("salt to taste", "For the sauce:") are kept as they are.</li>
+</ul>
+
+<h2>What scaling can't do for you</h2>
+<ul>
+  <li><strong>Eggs:</strong> if you get half an egg, beat one egg and use about half of it, or round to a whole egg.</li>
+  <li><strong>Pans and times:</strong> a bigger batch may need a bigger pan or two pans, and cooking times don't scale with
+  the amount. Go by the recipe's doneness cues (golden, set, a tester comes out clean).</li>
+  <li><strong>Cups are volume, not weight.</strong> "US cups and ounces" converts mL to cups and grams to ounces; it doesn't
+  turn a cup of flour into grams, because that depends on the ingredient and how the cup is filled.</li>
+</ul>
+
+<div class="card">
+  <p><strong>On a recipe website?</strong> Recipe Card does all of this on the page itself: one click shows just the recipe,
+  then change the servings or units and the whole card updates, with checklists and a screen-stays-on cook mode. It's free and
+  needs no install: <a href="../#get">drag the Recipe Card button to your bookmarks bar</a>.</p>
+</div>
+
+<h2>Where the numbers come from</h2>
+<p class="note">1 cup = 16 tbsp = 48 tsp. Metric factors from NIST Special Publication 811, Appendix B.9 (1 cup = 236.5882 mL,
+1 tbsp = 14.78676 mL, 1 tsp = 4.928922 mL, 1 oz = 28.34952 g, 1 lb = 453.5924 g):
+<a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9">NIST SP 811, Appendix B.9</a>.
+The scaler runs the same code as the Recipe Card add-on, and its spoon math is tested cell by cell against the printable chart.</p>
+
+<footer>Made with AI help (Claude) and tested against known amounts before publishing.
+This page counts visits with <a href="https://www.goatcounter.com/">GoatCounter</a> (no cookies, no personal data); the
+ingredients you paste are never sent anywhere.
+More free tools: <a href="https://jesse-py.github.io/">jesse-py.github.io</a>.</footer>
+</main>
+<script src="../demo/recipe.js"></script>
+<script>
+(function () {
+  var L = window.RecipeCardLib;
+  var ing = document.getElementById('ing'), makes = document.getElementById('makes'), want = document.getElementById('want');
+  var units = document.getElementById('units'), out = document.getElementById('out'), info = document.getElementById('factor');
+  var lines = [], exact = null; // exact factor from a quick button (1/3 typed as 1.333 servings would be off)
+  function num(el) { var v = parseFloat(String(el.value).replace(',', '.')); return isFinite(v) && v > 0 ? v : null; }
+  function render() {
+    var m = num(makes), w = num(want);
+    var factor = exact !== null ? exact : m && w ? w / m : 1;
+    info.textContent = m && w ? 'Multiplying every amount by ' + (Math.round(factor * 1000) / 1000) + '.' : 'Enter both servings numbers to scale.';
+    out.textContent = '';
+    lines = [];
+    ing.value.split(/\r?\n/).forEach(function (raw) {
+      var line = raw.replace(/^[\s•\-*▢☐□▪◦]+/, '').trim();
+      if (!line) return;
+      var r = L.renderIngredient(line, factor, units.value);
+      var li = document.createElement('li');
+      if (r.amount) {
+        var b = document.createElement('strong'); b.textContent = r.amount; li.appendChild(b);
+        li.appendChild(document.createTextNode(' ' + r.text));
+      } else { li.textContent = r.text; li.className = 'plain'; }
+      out.appendChild(li);
+      lines.push((r.amount ? r.amount + ' ' : '') + r.text);
+    });
+  }
+  ing.addEventListener('input', render);
+  [makes, want].forEach(function (el) { el.addEventListener('input', function () { exact = null; render(); }); });
+  units.addEventListener('change', render);
+  document.querySelectorAll('.quick button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f').split('/'), m = num(makes) || 1;
+      exact = f.length === 2 ? f[0] / f[1] : parseFloat(f[0]);
+      want.value = Math.round(m * exact * 1000) / 1000;
+      render();
+    });
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var msg = document.getElementById('copied');
+    navigator.clipboard.writeText(lines.join('\n')).then(function () { msg.textContent = 'Copied.'; },
+      function () { msg.textContent = 'Copy failed: select the list and copy it by hand.'; });
+  });
+  render();
+})();
+</script>
+<script>
+// Cookieless page-view counting (GoatCounter: no cookies, no personal data), only on the live site.
+if (/\.github\.io$/.test(location.hostname)) {
+  var s = document.createElement('script'); s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://simplemoneysheets.goatcounter.com/count'; document.head.appendChild(s);
+}
+</script>
+</body>
+</html>

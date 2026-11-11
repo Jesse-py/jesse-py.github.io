@@ -274,6 +274,55 @@
     return String(r === 0 ? Math.round(x * 10) / 10 : r);
   }
 
+  // ---------- measuring with standard cups and spoons ----------
+  // Same rules as the printable chart (products/kitchen-chart/build.py amount_text): cups 1/4, 1/3, 1/2, 1, then tbsp,
+  // then tsp to the nearest 1/8 (marked ~ if rounded); exact when it can be, fewest scoops, then no tsp part.
+  // 8 tsp -> "2 tbsp + 2 tsp" (half of 1/3 cup), 54 tsp -> "1 cup + 2 tbsp".
+  const TSP_PER = { tsp: 1, tbsp: 3, cup: 48 };
+  const EIGHTHS = ['', '⅛', '¼', '⅜', '½', '⅝', '¾', '⅞'];
+  const CUP_PARTS = [[0, ''], [1 / 4, '¼'], [1 / 3, '⅓'], [1 / 2, '½'], [2 / 3, '⅔'], [3 / 4, '¾']];
+
+  function lexLess(a, b) {
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i];
+    return false;
+  }
+
+  function measureSpoons(tsp) {
+    if (!(tsp > 0) || tsp > 768 + 1e-9) return null;
+    let best = null;
+    for (let w = 0; w <= 16; w++) {
+      for (const [p, ps] of CUP_PARTS) {
+        const cups = w + p;
+        const rest = tsp - cups * 48;
+        if (rest < -1e-9) continue;
+        let tbsp = Math.floor(rest / 3 + 1e-9);
+        const t = Math.max(0, rest - tbsp * 3);
+        let e8 = Math.round(t * 8);
+        const exact = Math.abs(e8 - t * 8) < 1e-6;
+        if (e8 === 24) { tbsp += 1; e8 = 0; }
+        const parts = [];
+        if (cups) parts.push((w ? String(w) : '') + ps + (cups > 1 ? ' cups' : ' cup'));
+        if (tbsp) parts.push(tbsp + ' tbsp');
+        if (e8) parts.push((e8 >= 8 ? String(Math.floor(e8 / 8)) : '') + EIGHTHS[e8 % 8] + ' tsp');
+        const scoops = w + (p === 2 / 3 || p === 3 / 4 ? 2 : p ? 1 : 0) + tbsp + (e8 ? 1 : 0);
+        const key = [exact ? 0 : 1, scoops, e8 ? 1 : 0, -cups];
+        if (!best || lexLess(key, best.key)) {
+          best = { key, text: (exact ? '' : '~ ') + (parts.length ? parts.join(' + ') : 'a pinch') };
+        }
+      }
+    }
+    return best.text;
+  }
+
+  // Can a scaled US volume be shown as one standard measure (1⅓ cups, 1½ tbsp, ⅜ tsp)? Not 6 tsp (2 tbsp) or 6 tbsp.
+  function oneMeasure(q, unit) {
+    const allowed = unit === 'cup' ? [0, 1 / 4, 1 / 3, 1 / 2, 2 / 3, 3 / 4] : unit === 'tbsp' ? [0, 1 / 2] : NICE.map((n) => n[0]);
+    if ((unit === 'tsp' && q >= 3 - 0.03) || (unit === 'tbsp' && q >= 4 - 0.04)) return false; // 3 tsp is 1 tbsp, 4 tbsp is 1/4 cup
+    if (q >= 10 && Math.abs(q - Math.round(q)) > 0.01 * q) return false; // formatQty rounds these to whole numbers
+    const whole = Math.floor(q);
+    return [...allowed, 1].some((f) => Math.abs(q - (whole + f)) <= 0.01 * q);
+  }
+
   // ---------- conversion ----------
   const ML = { tsp: 4.92892, tbsp: 14.7868, floz: 29.5735, cup: 236.588, pint: 473.176, quart: 946.353, gallon: 3785.41, ml: 1, l: 1000 };
   const G = { oz: 28.3495, lb: 453.592, g: 1, kg: 1000 };
@@ -321,6 +370,11 @@
       : mode === 'us' && unit && !US_UNITS[unit] ? toUS : null;
     let metric = unit === 'ml' || unit === 'l' || unit === 'g' || unit === 'kg';
     let relabel = null;
+    // scaled cups and spoons that no single measure holds (half of 1/3 cup is not "1/8 cup"): spell it out
+    if (!target && factor !== 1 && q2 === null && TSP_PER[unit] && !oneMeasure(q1, unit)) {
+      const m = measureSpoons(q1 * TSP_PER[unit]);
+      if (m) return { amount: m, text: p.rest, scaled: true };
+    }
     if (target) {
       const c1 = target(q1, unit);
       // keep a range in one unit: convert the second end with the first end's ratio
@@ -360,7 +414,8 @@
   }
 
   const api = { clean, decodeEntities, parseJsonLoose, extractRecipe, durationMinutes, formatMinutes, parseYield,
-    parseInstructions, parseIngredient, numValue, formatQty, formatMetric, toMetric, toUS, renderIngredient, convertTemps };
+    parseInstructions, parseIngredient, numValue, formatQty, formatMetric, toMetric, toUS, renderIngredient, convertTemps,
+    measureSpoons, oneMeasure };
   root.RecipeCardLib = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
