@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Kitchen Conversions &amp; Recipe Scaling</title>
+  <link>https://jesse-py.github.io/recipe-card/</link>
+  <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
+  <language>en-us</language>
+  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
+
+</channel>
+</rss>
