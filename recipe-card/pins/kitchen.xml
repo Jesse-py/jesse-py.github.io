@@ -5,8 +5,16 @@
   <link>https://jesse-py.github.io/recipe-card/</link>
   <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 09:00:00 +0000</lastBuildDate>
   <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
-
+  <item>
+    <title>How to Halve a Recipe: Half of 3/4 Cup, 1/3 Cup, 1 Tbsp</title>
+    <link>https://jesse-py.github.io/recipe-card/kitchen-conversion-chart/?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=halve-a-recipe#scaling</link>
+    <description>Half of 3/4 cup is 1/3 cup + 2 tsp. Half of 1/3 cup is 2 tbsp + 2 tsp. Half of 1/4 cup is 2 tbsp, and half of 1 tbsp is 1 1/2 tsp. The free printable kitchen chart also covers thirds, 1 1/2 times, doubles, cups to mL, grams, and oven temperatures.</description>
+    <guid isPermaLink="false">rc-pin-halve-a-recipe</guid>
+    <pubDate>Wed, 11 Nov 2026 09:00:00 +0000</pubDate>
+    <enclosure url="https://jesse-py.github.io/recipe-card/pins/halve-a-recipe.png" length="97006" type="image/png"/>
+    <media:content url="https://jesse-py.github.io/recipe-card/pins/halve-a-recipe.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
 </channel>
 </rss>
