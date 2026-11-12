@@ -5,7 +5,7 @@
   <link>https://jesse-py.github.io/recipe-card/</link>
   <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 11 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
   <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>How to Halve a Recipe: Half of 3/4 Cup, 1/3 Cup, 1 Tbsp</title>
@@ -15,6 +15,15 @@
     <pubDate>Wed, 11 Nov 2026 09:00:00 +0000</pubDate>
     <enclosure url="https://jesse-py.github.io/recipe-card/pins/halve-a-recipe.png" length="97006" type="image/png"/>
     <media:content url="https://jesse-py.github.io/recipe-card/pins/halve-a-recipe.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
+  <item>
+    <title>How Many Tablespoons in a Cup? (Free Kitchen Conversion Chart)</title>
+    <link>https://jesse-py.github.io/recipe-card/kitchen-conversion-chart/?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=tablespoons-in-a-cup#volume</link>
+    <description>1 cup is 16 tbsp, 3/4 cup is 12 tbsp, 1/3 cup is 5 tbsp + 1 tsp, and 1/4 cup is 4 tbsp. The free printable kitchen chart also converts cups and spoons to fluid ounces and mL, grams to ounces, and oven temperatures.</description>
+    <guid isPermaLink="false">rc-pin-tablespoons-in-a-cup</guid>
+    <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
+    <enclosure url="https://jesse-py.github.io/recipe-card/pins/tablespoons-in-a-cup.png" length="75396" type="image/png"/>
+    <media:content url="https://jesse-py.github.io/recipe-card/pins/tablespoons-in-a-cup.png" medium="image" type="image/png" width="1000" height="1500"/>
   </item>
 </channel>
 </rss>
