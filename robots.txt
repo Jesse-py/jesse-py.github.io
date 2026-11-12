@@ -4,3 +4,4 @@ Allow: /
 Sitemap: https://jesse-py.github.io/sitemap.xml
 Sitemap: https://jesse-py.github.io/simple-money-sheets/sitemap.xml
 Sitemap: https://jesse-py.github.io/diy-project-calculators/sitemap.xml
+Sitemap: https://jesse-py.github.io/landscape-material-calculator/sitemap.xml
