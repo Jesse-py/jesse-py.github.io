@@ -5,7 +5,7 @@
   <link>https://jesse-py.github.io/recipe-card/</link>
   <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
   <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>How to Halve a Recipe: Half of 3/4 Cup, 1/3 Cup, 1 Tbsp</title>
@@ -24,6 +24,15 @@
     <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
     <enclosure url="https://jesse-py.github.io/recipe-card/pins/tablespoons-in-a-cup.png" length="75396" type="image/png"/>
     <media:content url="https://jesse-py.github.io/recipe-card/pins/tablespoons-in-a-cup.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
+  <item>
+    <title>Oven Temperature Conversion: 350°F to °C and More</title>
+    <link>https://jesse-py.github.io/recipe-card/kitchen-conversion-chart/?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=oven-fahrenheit-celsius#oven</link>
+    <description>325°F is 163°C, 350°F is 177°C, 375°F is 191°C, 400°F is 204°C, and 425°F is 218°C. The free printable kitchen chart covers 250-475°F plus cups to mL, grams to ounces, and halving or doubling a recipe.</description>
+    <guid isPermaLink="false">rc-pin-oven-fahrenheit-celsius</guid>
+    <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
+    <enclosure url="https://jesse-py.github.io/recipe-card/pins/oven-fahrenheit-celsius.png" length="84519" type="image/png"/>
+    <media:content url="https://jesse-py.github.io/recipe-card/pins/oven-fahrenheit-celsius.png" medium="image" type="image/png" width="1000" height="1500"/>
   </item>
 </channel>
 </rss>
