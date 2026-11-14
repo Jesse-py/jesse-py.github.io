@@ -5,7 +5,7 @@
   <link>https://jesse-py.github.io/recipe-card/</link>
   <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
   <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>How to Halve a Recipe: Half of 3/4 Cup, 1/3 Cup, 1 Tbsp</title>
@@ -33,6 +33,15 @@
     <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
     <enclosure url="https://jesse-py.github.io/recipe-card/pins/oven-fahrenheit-celsius.png" length="84519" type="image/png"/>
     <media:content url="https://jesse-py.github.io/recipe-card/pins/oven-fahrenheit-celsius.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
+  <item>
+    <title>Free Recipe Card Button: Scale Servings, Convert Units, Skip the Clutter</title>
+    <link>https://jesse-py.github.io/recipe-card/?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=recipe-card-tool#try</link>
+    <description>Recipe Card is a free bookmark button: on a recipe page, one click shows just the ingredients and steps, lets you scale servings with real kitchen fractions, switch to metric or US units, keep your screen on while you cook, and print. No account, no tracking.</description>
+    <guid isPermaLink="false">rc-pin-recipe-card-tool</guid>
+    <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
+    <enclosure url="https://jesse-py.github.io/recipe-card/pins/recipe-card-tool.png" length="89589" type="image/png"/>
+    <media:content url="https://jesse-py.github.io/recipe-card/pins/recipe-card-tool.png" medium="image" type="image/png" width="1000" height="1500"/>
   </item>
 </channel>
 </rss>
