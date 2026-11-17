@@ -5,7 +5,7 @@
   <link>https://jesse-py.github.io/recipe-card/</link>
   <description>Cups, spoons, mL, grams, oven temperatures, and how to halve or double a recipe, with free printable charts.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
   <atom:link href="https://jesse-py.github.io/recipe-card/pins/kitchen.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>How to Halve a Recipe: Half of 3/4 Cup, 1/3 Cup, 1 Tbsp</title>
@@ -60,6 +60,15 @@
     <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
     <enclosure url="https://jesse-py.github.io/recipe-card/pins/third-of-a-recipe.png" length="75602" type="image/png"/>
     <media:content url="https://jesse-py.github.io/recipe-card/pins/third-of-a-recipe.png" medium="image" type="image/png" width="1000" height="1500"/>
+  </item>
+  <item>
+    <title>Ounces to Grams for Cooking: 1 oz, 4 oz, 8 oz, 1 lb</title>
+    <link>https://jesse-py.github.io/recipe-card/kitchen-conversion-chart/?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=grams-ounces#weight</link>
+    <description>1 ounce is 28 g, 4 oz is 113 g, 8 oz is 227 g, 1 lb is 454 g, and 100 g is 3.5 oz (NIST SP 811). The free printable kitchen chart also covers cups to mL, oven temperatures, and halving or doubling a recipe.</description>
+    <guid isPermaLink="false">rc-pin-grams-ounces</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+    <enclosure url="https://jesse-py.github.io/recipe-card/pins/grams-ounces.png" length="85745" type="image/png"/>
+    <media:content url="https://jesse-py.github.io/recipe-card/pins/grams-ounces.png" medium="image" type="image/png" width="1000" height="1500"/>
   </item>
 </channel>
 </rss>
