@@ -4,65 +4,326 @@
 <meta charset="utf-8">
 <meta name="p:domain_verify" content="dd85c5cff91aba68b553a9151f169325">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free calculators for money, taxes, and home projects</title>
-<meta name="description" content="Two free calculator sites: Simple Money Sheets (debt payoff, budgets, self-employed tax) and DIY Project Calculators (concrete, gravel, mulch, paint). No sign-up.">
+<title>Simple Tool Shop | Free calculators, spreadsheet templates, and websites for small businesses</title>
+<meta name="description" content="Free calculators for money, taxes, and home projects, Excel templates, and simple websites and menus for small businesses. No sign-up, no ads. Run by Jesse McCormick in Casper, Wyoming.">
 <link rel="canonical" href="https://simpletoolshop.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simple Tool Shop">
+<meta property="og:title" content="Simple Tool Shop: small tools that do one job well">
+<meta property="og:description" content="Free calculators for money, taxes, and home projects, Excel templates, and simple websites for small businesses.">
+<meta property="og:url" content="https://simpletoolshop.com/">
+<meta name="theme-color" content="#1f6b4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f6b4a'/%3E%3Crect x='7' y='8' width='18' height='3' rx='1.5' fill='%23fff'/%3E%3Crect x='7' y='14.5' width='12' height='3' rx='1.5' fill='%23fff'/%3E%3Crect x='7' y='21' width='15' height='3' rx='1.5' fill='%23f2b544'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://simpletoolshop.com/#org","name":"Simple Tool Shop","url":"https://simpletoolshop.com/",
+  "email":"jssmccormick@gmail.com","founder":{"@type":"Person","name":"Jesse McCormick"},
+  "address":{"@type":"PostalAddress","addressLocality":"Casper","addressRegion":"WY","addressCountry":"US"}},
+ {"@type":"WebSite","@id":"https://simpletoolshop.com/#site","name":"Simple Tool Shop","url":"https://simpletoolshop.com/","publisher":{"@id":"https://simpletoolshop.com/#org"}}
+]}
+</script>
 <style>
-  body { font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: #1c2321; background: #f7f8f6; margin: 0; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 48px; }
-  h1 { font-size: 1.7rem; margin: 0 0 8px; }
-  .card { background: #fff; border: 1px solid #dde3df; border-radius: 12px; padding: 18px 20px; margin: 18px 0; }
-  .card h2 { margin: 0 0 6px; font-size: 1.25rem; }
-  a { color: #1f7a52; }
-  ul { padding-left: 20px; margin: 8px 0 0; }
-  footer { color: #5b6662; font-size: .9rem; margin-top: 28px; }
+:root{
+  --bg:#f6f5f0; --surface:#ffffff; --ink:#1b211e; --muted:#58625d; --line:#dfe2da;
+  --accent:#1f6b4a; --accent-ink:#ffffff; --accent-soft:#e4efe8; --warm:#b7791f; --warm-soft:#fbf1df;
+  --shadow:0 1px 2px rgba(20,30,25,.05),0 4px 14px rgba(20,30,25,.05);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#131714; --surface:#1b201d; --ink:#e7ebe7; --muted:#a2aca6; --line:#2d3430;
+  --accent:#6fc49b; --accent-ink:#0f1a14; --accent-soft:#1f2c25; --warm:#e8b35a; --warm-soft:#2b2418;
+  --shadow:none;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--warm);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:12px;background:var(--surface);padding:8px 12px;z-index:9}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.top{border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
+.brand svg{flex:none}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;padding:0;font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink);text-decoration:underline}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;margin:0 0 14px}
+h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.1;letter-spacing:-.025em;margin:0 0 16px;max-width:18ch}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch;margin:0 0 26px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{filter:brightness(1.05);text-decoration:none}
+@media (min-width:900px){.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}}
+.sample{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);margin-top:32px}
+@media (min-width:900px){.sample{margin-top:0}}
+.sample .label{font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.sample .q{font-weight:600;margin:0 0 14px}
+.sample dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 12px;align-items:baseline}
+.sample dt{font-size:1.45rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;text-align:right}
+.sample dd{margin:0;color:var(--muted)}
+.sample .note{font-size:.85rem;color:var(--muted);margin:0 0 12px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;padding:0;margin:30px 0 0;color:var(--muted);font-size:.93rem}
+.facts li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+
+/* sections */
+section.block{padding:44px 0;border-top:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+h2{font-size:1.65rem;line-height:1.2;letter-spacing:-.015em;margin:0}
+.head p{margin:4px 0 0;color:var(--muted);max-width:62ch}
+.grid{display:grid;gap:16px}
+@media (min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card h3{font-size:1.15rem;margin:0 0 4px}
+.card p{margin:0 0 10px;color:var(--muted)}
+.card ul{list-style:none;padding:0;margin:4px 0 14px}
+.card li{padding:6px 0;border-bottom:1px dashed var(--line)}
+.card li:last-child{border-bottom:0}
+.card .more{margin-top:auto;font-weight:600}
+.sample .more{font-weight:600}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);margin-left:6px}
+
+/* templates */
+.product{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.price{font-weight:700;color:var(--ink);background:var(--accent-soft);border-radius:8px;padding:2px 10px;white-space:nowrap}
+
+/* business */
+.biz{background:var(--warm-soft);border-radius:18px;padding:32px 22px;margin:8px 0}
+@media (min-width:720px){.biz{padding:36px 34px}}
+.biz .card{border-color:transparent}
+.big{font-size:1.5rem;font-weight:700;color:var(--ink);margin:2px 0 6px}
+.big small{font-size:.9rem;font-weight:500;color:var(--muted)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+@media (min-width:720px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps li{counter-increment:s;background:var(--surface);border-radius:12px;padding:14px 16px;font-size:.95rem}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--warm);color:#fff;font-weight:700;font-size:.85rem;margin-bottom:6px}
+.contact{margin:22px 0 0;font-size:1.02rem}
+
+/* about */
+.about{display:grid;gap:22px}
+@media (min-width:720px){.about{grid-template-columns:1.3fr 1fr}}
+.about p{margin:0 0 12px}
+.aside{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.95rem}
+.aside dt{font-weight:600}
+.aside dd{margin:0 0 10px;color:var(--muted)}
+
+footer.bottom{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.9rem}
+footer.bottom .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 </style>
 </head>
 <body>
-<main>
-<h1>Free calculators for money, taxes, and home projects</h1>
-<p>Two small sites with calculators that run in your browser, plus a recipe add-on. No sign-up, no ads, and the sources for every tax number are cited on the page.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Simple Tool Shop home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1f6b4a"/><rect x="7" y="8" width="18" height="3" rx="1.5" fill="#fff"/><rect x="7" y="14.5" width="12" height="3" rx="1.5" fill="#fff"/><rect x="7" y="21" width="15" height="3" rx="1.5" fill="#f2b544"/></svg>
+      Simple Tool Shop
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#calculators">Calculators</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#business">For businesses</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-<section class="card">
-  <h2><a href="https://simpletoolshop.com/simple-money-sheets/">Simple Money Sheets</a></h2>
-  <p>Personal finance and self-employed tax calculators.</p>
-  <ul>
-    <li><a href="https://simpletoolshop.com/simple-money-sheets/debt-payoff-calculator/">Debt payoff calculator</a> (snowball vs avalanche)</li>
-    <li><a href="https://simpletoolshop.com/simple-money-sheets/budget-calculator/">Budget calculator</a></li>
-    <li><a href="https://simpletoolshop.com/simple-money-sheets/quarterly-estimated-tax-calculator/">Quarterly estimated tax calculator</a></li>
-    <li><a href="https://simpletoolshop.com/simple-money-sheets/estimated-tax-penalty-calculator/">Estimated tax penalty calculator</a> (Form 2210)</li>
+<main id="main">
+<div class="wrap">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div>
+  <p class="eyebrow">Casper, Wyoming</p>
+  <h1 id="hero-title">Small tools that do one job well.</h1>
+  <p class="lead">Free calculators for money, taxes, and home projects. Spreadsheet templates for Excel. And simple, fast websites
+  for small businesses, where you see a free preview before you pay anything.</p>
+  <div class="ctas">
+    <a class="btn primary" href="#calculators">Browse free calculators</a>
+    <a class="btn ghost" href="#business">Websites for small businesses</a>
+  </div>
+  <ul class="facts">
+    <li>More than 30 free calculators</li>
+    <li>No sign-up, no ads</li>
+    <li>Tax numbers cited to the IRS</li>
+    <li>What you type stays in your browser</li>
   </ul>
+  </div>
+  <aside class="sample" aria-label="Example: gravel calculator">
+    <p class="label">Example</p>
+    <p class="q">Gravel for a 20 &times; 10 ft area, 4 inches deep</p>
+    <dl>
+      <dt>2.72</dt><dd>cubic yards</dd>
+      <dt>3.67</dt><dd>tons</dd>
+      <dt>147</dt><dd>bags of &frac12; cubic foot</dd>
+    </dl>
+    <p class="note">Includes 10% extra, at 1.35 tons per cubic yard. Your supplier's weight may differ, and you can change it.</p>
+    <a class="more" href="/diy-project-calculators/gravel-calculator/">Open the gravel calculator &rarr;</a>
+  </aside>
 </section>
 
-<section class="card">
-  <h2><a href="https://simpletoolshop.com/diy-project-calculators/">DIY Project Calculators</a></h2>
-  <p>How much to buy for home and yard projects.</p>
-  <ul>
-    <li><a href="https://simpletoolshop.com/diy-project-calculators/concrete-calculator/">Concrete calculator</a> (bags or yards)</li>
-    <li><a href="https://simpletoolshop.com/diy-project-calculators/gravel-calculator/">Gravel calculator</a></li>
-    <li><a href="https://simpletoolshop.com/diy-project-calculators/mulch-calculator/">Mulch calculator</a></li>
-    <li><a href="https://simpletoolshop.com/diy-project-calculators/paint-calculator/">Paint calculator</a></li>
-  </ul>
+<section class="block" id="calculators" aria-labelledby="calc-title">
+  <div class="head">
+    <div>
+      <h2 id="calc-title">Free calculators</h2>
+      <p>They run in your browser. No sign-up and no email address needed.</p>
+    </div>
+  </div>
+  <div class="grid g3">
+    <article class="card">
+      <h3>Money &amp; taxes</h3>
+      <p>Debt, budgets, savings, and self-employed tax.</p>
+      <ul>
+        <li><a href="/simple-money-sheets/debt-payoff-calculator/">Debt snowball vs avalanche</a></li>
+        <li><a href="/simple-money-sheets/credit-card-payoff-calculator/">Credit card payoff</a></li>
+        <li><a href="/simple-money-sheets/budget-calculator/">50/30/20 budget</a></li>
+        <li><a href="/simple-money-sheets/savings-goal-calculator/">Savings goal</a></li>
+        <li><a href="/simple-money-sheets/quarterly-estimated-tax-calculator/">Quarterly estimated tax</a></li>
+        <li><a href="/simple-money-sheets/self-employment-tax-calculator/">Self-employment tax</a></li>
+        <li><a href="/simple-money-sheets/side-hustle-tax-calculator/">Side hustle tax</a></li>
+        <li><a href="/simple-money-sheets/mileage-deduction-calculator/">Mileage deduction</a></li>
+      </ul>
+      <a class="more" href="/simple-money-sheets/">All 21 money &amp; tax calculators &rarr;</a>
+    </article>
+    <article class="card">
+      <h3>Home &amp; yard</h3>
+      <p>How much to buy before you head to the store.</p>
+      <ul>
+        <li><a href="/diy-project-calculators/concrete-calculator/">Concrete</a> <span class="tag">bags or yards</span></li>
+        <li><a href="/diy-project-calculators/gravel-calculator/">Gravel</a> <span class="tag">tons or yards</span></li>
+        <li><a href="/diy-project-calculators/mulch-calculator/">Mulch</a></li>
+        <li><a href="/diy-project-calculators/topsoil-calculator/">Topsoil</a></li>
+        <li><a href="/diy-project-calculators/paver-calculator/">Pavers, base, and sand</a></li>
+        <li><a href="/diy-project-calculators/fence-calculator/">Wood fence</a></li>
+        <li><a href="/diy-project-calculators/paint-calculator/">Paint</a></li>
+        <li><a href="/diy-project-calculators/firewood-cord-calculator/">Firewood cords</a></li>
+      </ul>
+      <a class="more" href="/diy-project-calculators/">All 13 home &amp; yard calculators &rarr;</a>
+    </article>
+    <article class="card">
+      <h3>Kitchen</h3>
+      <p>For cooking from recipes you find online.</p>
+      <ul>
+        <li><a href="/recipe-card/recipe-scaler/">Recipe scaler</a> <span class="tag">double or halve</span></li>
+        <li><a href="/recipe-card/kitchen-conversion-chart/">Kitchen conversion chart</a></li>
+        <li><a href="/recipe-card/">Recipe Card</a> <span class="tag">just the recipe, no life story</span></li>
+      </ul>
+      <p>Recipe Card is a free add-on for
+      <a href="https://microsoftedge.microsoft.com/addons/detail/echjoonhclmhbilcokphcjapkgommdpj">Edge</a> and
+      <a href="https://addons.mozilla.org/firefox/addon/recipe-card-clean-recipe-view/">Firefox</a>, or a bookmark button for any browser.</p>
+      <a class="more" href="/recipe-card/#demo">Try the demo &rarr;</a>
+    </article>
+  </div>
 </section>
 
-<section class="card">
-  <h2><a href="https://simpletoolshop.com/recipe-card/">Recipe Card</a></h2>
-  <p>A free browser add-on that shows just the recipe: ingredients and steps, servings scaling, metric/US units, cook mode, and print.
-  <a href="https://simpletoolshop.com/recipe-card/#try">Try the demo</a>.</p>
+<section class="block" id="templates" aria-labelledby="tpl-title">
+  <div class="head">
+    <div>
+      <h2 id="tpl-title">Spreadsheet templates</h2>
+      <p>Excel files you download once and keep. Each page shows what's inside before you buy.</p>
+    </div>
+  </div>
+  <div class="grid g2">
+    <article class="card"><div class="product"><div><h3><a href="/simple-money-sheets/debt-payoff-planner/">Debt Payoff Planner</a></h3>
+      <p>Snowball or avalanche plan, month by month, with your payoff date.</p></div><span class="price">$9</span></div></article>
+    <article class="card"><div class="product"><div><h3><a href="/simple-money-sheets/monthly-budget-spreadsheet/">Monthly Budget Kit</a></h3>
+      <p>Zero-based and 50/30/20 budget templates in one file.</p></div><span class="price">$7</span></div></article>
+    <article class="card"><div class="product"><div><h3><a href="/simple-money-sheets/sinking-funds-tracker/">Sinking Funds Tracker</a></h3>
+      <p>Save a little each month for the bills that come once a year.</p></div><span class="price">$6</span></div></article>
+    <article class="card"><div class="product"><div><h3><a href="/simple-money-sheets/freelancer-tax-tracker/">Freelancer Tax Tracker</a></h3>
+      <p>1099 income, Schedule C expenses, and quarterly estimated tax, for 2026 and 2027.</p></div><span class="price">$12</span></div></article>
+  </div>
+  <p>The budget, sinking funds, and debt payoff sheets come together in the <a href="https://jamccormick.gumroad.com/l/money-sheets-bundle">Money Sheets Bundle</a> for $15.
+  Free <a href="/simple-money-sheets/printable-tax-logs/">printable mileage, tip, and expense logs</a> (PDF) too.</p>
 </section>
 
-<section class="card">
-  <h2><a href="https://simpletoolshop.com/landscape-material-calculator/">PileQuote Material Calculator</a></h2>
-  <p>A free WordPress plugin for landscape supply yards: customers enter an area and depth and get yards or tons with the yard's own prices
-  and a quote button. <a href="https://simpletoolshop.com/landscape-material-calculator/#demo">Try the demo</a>.</p>
+<section class="block" id="business" aria-labelledby="biz-title">
+  <div class="biz">
+    <div class="head">
+      <div>
+        <h2 id="biz-title">For small businesses</h2>
+        <p>If you got an email from Jesse McCormick with a preview of your own website or menu, this is who sent it.</p>
+      </div>
+    </div>
+    <div class="grid g3">
+      <article class="card">
+        <h3>Website rebuild</h3>
+        <p class="big">$199 <small>one time</small></p>
+        <p>A clean site that's fast and easy to use on a phone, built from what's already on your current site. The site is yours.
+        Or add $25 a month and I'll host it and make up to 2 changes a month.</p>
+      </article>
+      <article class="card">
+        <h3>Restaurant menu</h3>
+        <p class="big">$59 <small>one time</small></p>
+        <p>A menu page that's easy to read on a phone, plus a print-ready menu card. Add $10 a month and I'll keep it online and up to date.</p>
+      </article>
+      <article class="card">
+        <h3>Custom spreadsheets</h3>
+        <p class="big">from $20 <small>on Fiverr</small></p>
+        <p>Build or fix an Excel tracker, formulas, or a quote sheet.
+        <a href="https://www.fiverr.com/smalltoolshop/build-or-fix-your-excel-spreadsheet-tracker-or-formulas">See the Fiverr listing</a>.</p>
+      </article>
+    </div>
+    <ol class="steps" aria-label="How a website or menu works">
+      <li>I build a private preview made for your business.</li>
+      <li>Tell me what to change: hours, wording, photos.</li>
+      <li>Don't love it? Stop there. You owe nothing, and I delete the preview.</li>
+      <li>Love it? Pay once. Change your mind within 30 days and I refund the full price.</li>
+    </ol>
+    <p class="contact"><strong>Want a preview of your own site?</strong> Email
+    <a href="mailto:jssmccormick@gmail.com?subject=Website%20preview">jssmccormick@gmail.com</a> with your business name and website.
+    Run a landscape supply yard? The free <a href="https://wordpress.org/plugins/pilequote-material-calculator/">PileQuote</a> WordPress plugin
+    lets customers work out yards or tons at your prices (<a href="/landscape-material-calculator/#demo">demo</a>).</p>
+  </div>
 </section>
 
-<section class="card">
-  <h2><a href="https://github.com/Jesse-py/freelance-tax-estimator">freelance-tax-estimator</a></h2>
-  <p>The open-source JavaScript engine behind the self-employed tax calculators, with a command-line version.</p>
+<section class="block" id="about" aria-labelledby="about-title">
+  <div class="about">
+    <div>
+      <h2 id="about-title">About</h2>
+      <p>Simple Tool Shop is run by Jesse McCormick in Casper, Wyoming. It started as two calculator sites,
+      <a href="/simple-money-sheets/">Simple Money Sheets</a> and <a href="/diy-project-calculators/">DIY Project Calculators</a>,
+      and now covers everything under one name.</p>
+      <p>The tools are built with AI help (Claude) and tested before they go live: each calculator is checked against worked examples, and
+      tax figures come from IRS publications cited on the page. The math engine behind the tax calculators is
+      <a href="https://github.com/Jesse-py/freelance-tax-estimator">open source</a>.</p>
+      <p>The free calculators are paid for by the templates and the business services. If something here helped you, that's how to keep it free.</p>
+    </div>
+    <dl class="aside">
+      <dt>Contact</dt>
+      <dd><a href="mailto:jssmccormick@gmail.com">jssmccormick@gmail.com</a></dd>
+      <dt>Privacy</dt>
+      <dd>Calculators run in your browser; the numbers you type aren't sent to anyone. Visits are counted with GoatCounter (no cookies, no
+      personal data). <a href="/simple-money-sheets/about/">Full privacy note</a>.</dd>
+      <dt>Corrections</dt>
+      <dd>Found a wrong number? Email and it gets checked and fixed.</dd>
+    </dl>
+  </div>
 </section>
 
-<footer>Made with AI help (Claude) and tested before publishing.</footer>
+</div>
 </main>
+
+<footer class="bottom">
+  <div class="wrap">
+    <span>&copy; 2026 Simple Tool Shop &middot; Casper, Wyoming</span>
+    <span>Made with AI help (Claude) and tested before publishing.</span>
+  </div>
+</footer>
+<script>
+// Cookieless page-view counting (GoatCounter: no cookies, no personal data), only on the live site.
+if (/(\.github\.io|simpletoolshop\.com)$/.test(location.hostname)) {
+  var s = document.createElement('script'); s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://simplemoneysheets.goatcounter.com/count'; document.head.appendChild(s);
+}
+</script>
 </body>
 </html>
